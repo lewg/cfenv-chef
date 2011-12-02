@@ -18,7 +18,7 @@ Instructions
 		$ mkdir YOUR_FOLDER
 		$ cd YOUR_FOLDER
 		$ vagrant init
-		$ git clone gitosis@coffee.wharton.upenn.edu:cfenv-chef.git
+		$ git clone git@github.com:lewg/cfenv-chef.git
 		$ mkdir cfinstaller
 		$ cd cfinstaller
 		$ cp YOUR_CF_INSTALLER .
@@ -56,8 +56,8 @@ Instructions
 
 1. What I do after this is share folders into the CF root so I can edit locally, but run in the VM. Here's two examples which you can modify to your own taste (also in `Vagrantfile`):
 
-		config.vm.share_folder "site-one", "/opt/coldfusion/wwwroot/core", "~/Sites/site-one"
-		config.vm.share_folder "site-two", "/opt/coldfusion/wwwroot/knowledge", "~/Sites/site-two"
+		config.vm.share_folder "site-one", "/opt/coldfusion/wwwroot/site-one", "~/Sites/site-one"
+		config.vm.share_folder "site-two", "/opt/coldfusion/wwwroot/site-two", "~/Sites/site-two"
 		
 1. To see your changes to the file shares, run a `vagrant reload`. If you modify the chef stuff, you can run a `vagrant provision` to kick off a chef run. Because of the way I set up the chef recipe, that will also have the side effect of restarting CF. Just for reference, you can log into the box with `vagrant ssh`. That's it!
 
