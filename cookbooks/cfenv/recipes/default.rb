@@ -28,7 +28,7 @@ end
 # Run the installer
 execute "cf_installer" do
   command "#{node[:cfenv][:installer]} -f /tmp/cfenv.properties"
-  creates "/opt/coldfusion/bin/coldfusion"
+  creates "#{node[:cfenv][:install_path]}/bin/coldfusion"
   action :run
   user "root"
   cwd "/tmp"
@@ -36,7 +36,7 @@ end
 
 # Link the init script
 execute "cf_init" do 
-  command "ln -sf /opt/coldfusion/bin/coldfusion /etc/init.d/coldfusion"
+  command "ln -sf #{node[:cfenv][:install_path]}/bin/coldfusion /etc/init.d/coldfusion"
   creates "/etc/init.d/coldfusion"
   action :run
   user "root"

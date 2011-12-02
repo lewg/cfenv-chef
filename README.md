@@ -61,3 +61,7 @@ Instructions
 		
 1. To see your changes to the file shares, run a `vagrant reload`. If you modify the chef stuff, you can run a `vagrant provision` to kick off a chef run. Because of the way I set up the chef recipe, that will also have the side effect of restarting CF. Just for reference, you can log into the box with `vagrant ssh`. That's it!
 
+More Info
+=========
+
+This little repo is merely standing on the shoulders of giants. If you're not familiar with Chef, I suggest you [take a look here](http://community.opscode.com/). And [here for Vagrant](http://vagrantup.com/). Very cool projects. 
