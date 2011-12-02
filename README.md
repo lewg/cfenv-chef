@@ -54,10 +54,10 @@ Instructions
 
 		$ vagrant up
 
-1. What I do after this is share folders into the CF root so I can edit locally, but run in the VM. Here's two examples which you can modify to your own taste (also in `Vagrantfile`):
+1. What I do after this is share folders into the CF root so I can edit locally, but run in the VM. Here's two examples which you can modify to your own taste (also in `Vagrantfile`). You'll see that I added the second one as an NFS mount. [According to this page](http://vagrantup.com/docs/nfs.html) you should consider this as your working folder approaches 1,000 files. If you do use it, vagrant will ask for your primary machine password (for sudo) so it can export the NFS volume(s). 
 
 		config.vm.share_folder "site-one", "/opt/coldfusion/wwwroot/site-one", "~/Sites/site-one"
-		config.vm.share_folder "site-two", "/opt/coldfusion/wwwroot/site-two", "~/Sites/site-two"
+		config.vm.share_folder "site-two", "/opt/coldfusion/wwwroot/site-two", "~/Sites/site-two", :nfs => true
 		
 1. To see your changes to the file shares, run a `vagrant reload`. If you modify the chef stuff, you can run a `vagrant provision` to kick off a chef run. Because of the way I set up the chef recipe, that will also have the side effect of restarting CF. Just for reference, you can log into the box with `vagrant ssh`. That's it!
 
