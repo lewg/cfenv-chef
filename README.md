@@ -61,6 +61,33 @@ Instructions
 		
 1. To see your changes to the file shares, run a `vagrant reload`. If you modify the chef stuff, you can run a `vagrant provision` to kick off a chef run. Because of the way I set up the chef recipe, that will also have the side effect of restarting CF. Just for reference, you can log into the box with `vagrant ssh`. That's it!
 
+Optional Setup
+==============
+
+I've put in some limited functionality for creating datasources in CF with chef. You can use these examples (placed inside the config.vm.provision block) to create a data sources. There's no support for putting in the password, but I understand this could probably be done. Multiple servers can be defined inside "datasources". 
+
+SQL Server
+----------
+
+		chef.json = {
+			"cfenv" => {
+				"datasources" => {
+					"some_db" => {
+						"name" => "SOME_DB",
+						"driver" => "MSSQLServer",
+						"vender" => "sqlserver",
+						"buffer" => "128000.0",
+						"jdbc_class" => "jdbc:macromedia:sqlserver",
+						"server_address" => "dbserver.example.edu",
+						"server_port" => "1433",
+						"db_name" => "SOME_DB"
+					}
+				}
+			}
+		}
+
+
+
 More Info
 =========
 

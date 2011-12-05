@@ -4,3 +4,5 @@ default[:cfenv][:installer] = "/vagrant/cfinstaller/ColdFusion_9_WWE_linux.bin"
 default[:cfenv][:install_path] = "/opt/coldfusion"
 # CF Admin password
 default[:cfenv][:admin_pw] = "cfenv"
+# Node Datasources
+default[:cfenv][:datasources] = {}

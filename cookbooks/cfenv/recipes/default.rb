@@ -50,5 +50,15 @@ service "coldfusion" do
   status_command "status"
   reload_command "reload"
   supports :status => true, :restart => true, :reload => false
-  action [ :enable, :restart ]
+  action [ :enable ]
 end
+
+# Set up CF datasources
+template "#{node[:cfenv][:install_path]}/lib/neo-datasource.xml" do
+  source "neo-datasource.xml.erb"
+  mode 0664
+  owner "nobody"
+  group 2
+  notifies :restart, "service[coldfusion]", :delayed
+end
+
