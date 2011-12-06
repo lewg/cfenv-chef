@@ -19,7 +19,7 @@
 
 # Generate a keystore
 execute "cf_keygen" do
-  command "#{node[:cfenv][:install_path]}/runtime/jre/bin/keytool -genkeypair -dname \"cn=#{node[:cfenv][:ssl_hostname]}, ou=#{node[:cfenv][:ssl_ou]}, o=#{node[:cfenv][:ssl_company]}, L=#{node[:cfenv][:ssl_locality]}, ST=#{node[:cfenv][:ssl_state]}, C=#{node[:cfenv][:ssl_state]}\" -keyalg rsa -storepass #{node[:cfenv][:ssl_keystore_pass]} -keystore #{node[:cfenv][:install_path]}/lib/keystore"
+  command "#{node[:cfenv][:install_path]}/runtime/jre/bin/keytool -genkeypair -dname \"cn=#{node[:cfenv][:ssl_hostname]}, ou=#{node[:cfenv][:ssl_ou]}, o=#{node[:cfenv][:ssl_company]}, L=#{node[:cfenv][:ssl_locality]}, ST=#{node[:cfenv][:ssl_state]}, C=#{node[:cfenv][:ssl_state]}\" -keyalg rsa -storepass #{node[:cfenv][:ssl_keystore_pass]} -keystore #{node[:cfenv][:install_path]}runtime/lib/keystore"
   creates "#{node[:cfenv][:install_path]}/lib/keystore"
   action :run
   user "root"
@@ -33,5 +33,3 @@ execute "cf_keystore_perms" do
   action :run
 end
 
-
-# Install the Certificate
