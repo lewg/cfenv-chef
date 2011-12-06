@@ -64,10 +64,14 @@ Instructions
 Optional Setup
 ==============
 
+Note: Although I've put each type of functionality's setup code example in it's own chef.json => "cfenv" block, in reality you'd want to merge them all into one.
+
+
+Datasources
+-----------
+
 I've put in some limited functionality for creating datasources in CF with chef. You can use these examples (placed inside the config.vm.provision block) to create a data sources. There's no support for putting in the password, but I understand this could probably be done. Multiple servers can be defined inside "datasources". 
 
-SQL Server
-----------
 
 		chef.json = {
 			"cfenv" => {
@@ -87,6 +91,14 @@ SQL Server
 		}
 
 
+
+Additionally, you can enable SSL on JRun (setup on port 9100) by including this in your setup. The cookbook is setup to override all the other certificate attributes if you'd so like. Check the cfenv cookbook Readme.
+
+		chef.json = {
+			"cfenv" => {
+				"use_ssl" => true
+			}
+		}
 
 More Info
 =========
