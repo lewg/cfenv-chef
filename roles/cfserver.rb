@@ -4,7 +4,8 @@ description "Set up a ColdFusion Dev Environment"
 run_list(
   "recipe[git]",
   "recipe[subversion]",
-  "recipe[cfenv]"
+  "recipe[cfenv]",
+  "recipe[cfenv::ssl]"
 )
 # Attributes applied if the node doesn't have it set already.
 default_attributes(

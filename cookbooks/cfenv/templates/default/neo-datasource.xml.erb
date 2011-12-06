@@ -364,7 +364,7 @@
 						</var>
 					</struct>
 				</var>
-				<% node['cfenv']['datasources'].each do |idenfier,datasource| %>
+				<% node[:cfenv][:datasources].each do |idenfier,datasource| %>
 				<var name="<%= datasource['name'] %>">
 					<struct type="coldfusion.server.ConfigMap">
 						<var name="disable_autogenkeys">
