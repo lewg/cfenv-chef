@@ -361,6 +361,7 @@
   <% if node[:cfenv][:use_ssl] %>
   <service class="jrun.servlet.http.SSLService" name="SSLService">
     <attribute name="port">9100</attribute>
+    <attribute name="interface">*</attribute>
     <attribute name="keyStore">{jrun.rootdir}/lib/keystore</attribute>
     <attribute name="keyStorePassword"><%= node[:cfenv][:ssl_keystore_pass] %></attribute>
     <attribute name="trustStore">{jrun.rootdir}/lib/trustStore</attribute>
