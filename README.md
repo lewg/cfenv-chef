@@ -29,7 +29,7 @@ Instructions
 1. Modify the `Vagrantfile` to change the VM specs, base box, IP you'll access it on, and set up chef provisioning. Here are the relevant lines from my setup:
 
 		# Every Vagrant virtual environment requires a box to build off of.
-		config.vm.box = "lucid32"
+		config.vm.box = "base"
 
 		# Assign this VM to a host only network IP, allowing you to access it
 		# via the IP.
@@ -45,8 +45,8 @@ Instructions
 		# to this Vagrantfile), and adding some recipes and/or roles.
 		#
 		config.vm.provision :chef_solo do |chef|
-			chef.cookbooks_path = "cfenv-chef/cookbooks"
-			chef.roles_path = "cfenv-chef/roles"
+			chef.cookbooks_path = "cookbooks"
+			chef.roles_path = "roles"
 			chef.add_role "cfserver"
 		end
 
@@ -54,7 +54,9 @@ Instructions
 
 		$ vagrant up
 
-1. What I do after this is share folders into the CF root so I can edit locally, but run in the VM. Here's two examples which you can modify to your own taste (also in `Vagrantfile`). You'll see that I added the second one as an NFS mount. [According to this page](http://vagrantup.com/docs/nfs.html) you should consider this as your working folder approaches 1,000 files. If you do use it, vagrant will ask for your primary machine password (for sudo) so it can export the NFS volume(s). 
+1. By default, CF will use the wwwroot folder in your vagrant folder as its web root. Whatever files you put in there and edit from your host machine will be accessible via http://(guestipaddress):8500/... See the "Optinal Setup" section below for details on overriding the web root path.
+
+1. You can also add additional custom file shares. Here's two examples which you can modify to your own taste (also in `Vagrantfile`). You'll see that I added the second one as an NFS mount. [According to this page](http://vagrantup.com/docs/nfs.html) you should consider this as your working folder approaches 1,000 files. If you do use it, vagrant will ask for your primary machine password (for sudo) so it can export the NFS volume(s). 
 
 		config.vm.share_folder "site-one", "/opt/coldfusion/wwwroot/site-one", "~/Sites/site-one"
 		config.vm.share_folder "site-two", "/opt/coldfusion/wwwroot/site-two", "~/Sites/site-two", :nfs => true
@@ -91,8 +93,21 @@ I've put in some limited functionality for creating datasources in CF with chef.
 		}
 
 
+Web Root
+--------
 
-Additionally, you can enable SSL on JRun (setup on port 9100) by including this in your setup. The cookbook is setup to override all the other certificate attributes if you'd so like. Check the cfenv cookbook Readme.
+You can override the default wwwroot web root path to any path on the guest machine.
+
+		chef.json = {
+			"cfenv" => {
+				"webroot" => "/opt/coldfusion/wwwroot"
+			}
+		}
+
+SSL
+---
+
+You can enable SSL on JRun (setup on port 9100) by including this in your setup. The cookbook is setup to override all the other certificate attributes if you'd so like. Check the cfenv cookbook Readme.
 
 		chef.json = {
 			"cfenv" => {
