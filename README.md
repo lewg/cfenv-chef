@@ -50,11 +50,16 @@ Instructions
 			chef.add_role "cfserver"
 		end
 
+1. CF will look for a wwwroot folder in your vagrant folder to use as the web root. Whatever files you put in there will be accessible via http://(guestipaddress):8500/... See the "Optional Setup" section below for details on overriding the web root path.
+
+		$ cd YOUR_FOLDER
+		$ mkdir wwwroot
+
 1. Bring it up! (It takes a few minutes the first time.) When it's done you should have CF running on port 8500 of the ip you specified in the `Vagrantfile`. It's installed in `/opt/coldfusion` if you need to find it, and the administrator password is in the `cfenv-chef/roles/cfserver.rb` file (which you can change if you'd like). 
 
 		$ vagrant up
 
-1. What I do after this is share folders into the CF root so I can edit locally, but run in the VM. Here's two examples which you can modify to your own taste (also in `Vagrantfile`). You'll see that I added the second one as an NFS mount. [According to this page](http://vagrantup.com/docs/nfs.html) you should consider this as your working folder approaches 1,000 files. If you do use it, vagrant will ask for your primary machine password (for sudo) so it can export the NFS volume(s). 
+1. You can also add additional custom file shares. Here's two examples which you can modify to your own taste (also in `Vagrantfile`). You'll see that I added the second one as an NFS mount. [According to this page](http://vagrantup.com/docs/nfs.html) you should consider this as your working folder approaches 1,000 files. If you do use it, vagrant will ask for your primary machine password (for sudo) so it can export the NFS volume(s). 
 
 		config.vm.share_folder "site-one", "/opt/coldfusion/wwwroot/site-one", "~/Sites/site-one"
 		config.vm.share_folder "site-two", "/opt/coldfusion/wwwroot/site-two", "~/Sites/site-two", :nfs => true
@@ -91,8 +96,21 @@ I've put in some limited functionality for creating datasources in CF with chef.
 		}
 
 
+Web Root
+--------
 
-Additionally, you can enable SSL on JRun (setup on port 9100) by including this in your setup. The cookbook is setup to override all the other certificate attributes if you'd so like. Check the cfenv cookbook Readme.
+You can override the default web root path to any guest path.
+
+		chef.json = {
+			"cfenv" => {
+				"webroot" => "/opt/coldfusion/wwwroot"
+			}
+		}
+
+SSL
+---
+
+You can enable SSL on JRun (setup on port 9100) by including this in your setup. The cookbook is setup to override all the other certificate attributes if you'd so like. Check the cfenv cookbook Readme.
 
 		chef.json = {
 			"cfenv" => {
@@ -103,4 +121,4 @@ Additionally, you can enable SSL on JRun (setup on port 9100) by including this 
 More Info
 =========
 
-This little repo is merely standing on the shoulders of giants. If you're not familiar with Chef, I suggest you [take a look here](http://community.opscode.com/). And [here for Vagrant](http://vagrantup.com/). Very cool projects. 
+This little repo is merely standing on the shoulders of giants. If you're not familiar with Chef, I suggest you [take a look here](http://community.opscode.com/). And [here for Vagrant](http://vagrantup.com/). Very cool projects.
