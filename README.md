@@ -45,8 +45,8 @@ Instructions
 		# to this Vagrantfile), and adding some recipes and/or roles.
 		#
 		config.vm.provision :chef_solo do |chef|
-			chef.cookbooks_path = "cfenv-chef/cookbooks"
-			chef.roles_path = "cfenv-chef/roles"
+			chef.cookbooks_path = "cookbooks"
+			chef.roles_path = "roles"
 			chef.add_role "cfserver"
 		end
 
