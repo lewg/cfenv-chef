@@ -29,7 +29,7 @@ Instructions
 1. Modify the `Vagrantfile` to change the VM specs, base box, IP you'll access it on, and set up chef provisioning. Here are the relevant lines from my setup:
 
 		# Every Vagrant virtual environment requires a box to build off of.
-		config.vm.box = "lucid32"
+		config.vm.box = "base"
 
 		# Assign this VM to a host only network IP, allowing you to access it
 		# via the IP.
