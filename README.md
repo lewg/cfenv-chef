@@ -29,7 +29,7 @@ Instructions
 1. Modify the `Vagrantfile` to change the VM specs, base box, IP you'll access it on, and set up chef provisioning. Here are the relevant lines from my setup:
 
 		# Every Vagrant virtual environment requires a box to build off of.
-		config.vm.box = "lucid32"
+		config.vm.box = "base"
 
 		# Assign this VM to a host only network IP, allowing you to access it
 		# via the IP.
@@ -103,4 +103,4 @@ Additionally, you can enable SSL on JRun (setup on port 9100) by including this 
 More Info
 =========
 
-This little repo is merely standing on the shoulders of giants. If you're not familiar with Chef, I suggest you [take a look here](http://community.opscode.com/). And [here for Vagrant](http://vagrantup.com/). Very cool projects. 
+This little repo is merely standing on the shoulders of giants. If you're not familiar with Chef, I suggest you [take a look here](http://community.opscode.com/). And [here for Vagrant](http://vagrantup.com/). Very cool projects.
