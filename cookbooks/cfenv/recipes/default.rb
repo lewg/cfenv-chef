@@ -62,3 +62,11 @@ template "#{node[:cfenv][:install_path]}/lib/neo-datasource.xml" do
   notifies :restart, "service[coldfusion]", :delayed
 end
 
+template "#{node[:cfenv][:install_path]}/wwwroot/WEB-INF/jrun-web.xml" do
+  source "jrun-web.xml.erb"
+  mode 0664
+  owner "nobody"
+  group 2
+  notifies :restart, "service[coldfusion]", :delayed
+end
+

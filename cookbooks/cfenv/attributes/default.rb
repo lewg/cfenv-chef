@@ -5,6 +5,9 @@ default[:cfenv][:install_path] = "/opt/coldfusion"
 # CF Admin password
 default[:cfenv][:admin_pw] = "cfenv"
 
+# JRun Web root
+default[:cfenv][:webroot] = "/vagrant/wwwroot"
+
 # Node Datasources
 default[:cfenv][:datasources] = {}
 
