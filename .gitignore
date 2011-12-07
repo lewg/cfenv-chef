@@ -1,2 +1,4 @@
 .rake_test_cache
-
+Vagrantfile
+.vagrant
+cfinstaller
