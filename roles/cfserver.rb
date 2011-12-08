@@ -4,7 +4,9 @@ description "Set up a ColdFusion Dev Environment"
 run_list(
   "recipe[git]",
   "recipe[subversion]",
+  "recipe[unzip]",
   "recipe[cfenv]",
+  "recipe[cfenv::chf9010002]",
   "recipe[cfenv::datasources]",
   "recipe[cfenv::ssl]"
 )
