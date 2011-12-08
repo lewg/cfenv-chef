@@ -53,15 +53,16 @@ service "coldfusion" do
   action [ :enable ]
 end
 
-# Set up CF datasources
-template "#{node[:cfenv][:install_path]}/lib/neo-datasource.xml" do
-  source "neo-datasource.xml.erb"
-  mode 0664
-  owner "nobody"
-  group 2
-  notifies :restart, "service[coldfusion]", :delayed
+# Create the webroot if it doesn't exist
+directory "#{node[:cfenv][:webroot]}" do
+  owner "vagrant"
+  group "vagrant"
+  mode "0755"
+  action :create
+  not_if { File.directory?("#{node[:cfenv][:webroot]}") }
 end
 
+# Set the webroot
 template "#{node[:cfenv][:install_path]}/wwwroot/WEB-INF/jrun-web.xml" do
   source "jrun-web.xml.erb"
   mode 0664
