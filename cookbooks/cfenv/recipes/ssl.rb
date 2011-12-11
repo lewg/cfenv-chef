@@ -38,18 +38,18 @@ end
 # Customize the jrun config
 template "#{node[:cfenv][:install_path]}/runtime/servers/coldfusion/SERVER-INF/jrun.xml" do
   source "jrun.xml.erb"
-  mode 0664
+  mode "0664"
   owner "nobody"
-  group 2
+  group "bin"
   notifies :restart, "service[coldfusion]", :delayed
 end
 
 # Customize the jvm config
 template "#{node[:cfenv][:install_path]}/runtime/bin/jvm.config" do
   source "jvm.config.erb"
-  mode 0664
+  mode "0664"
   owner "nobody"
-  group 2
+  group "bin"
   notifies :restart, "service[coldfusion]", :delayed
 end
   
