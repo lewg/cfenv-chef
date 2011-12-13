@@ -71,6 +71,19 @@ Optional Setup
 
 Note: Although I've put each type of functionality's setup code example in it's own chef.json => "cfenv" block, in reality you'd want to merge them all into one.
 
+Knife
+-----
+
+If you'd like to use [knife](http://wiki.opscode.com/display/chef/Knife) to manage or download new cookbooks, you can run the following command to get set up quickly (run from the `cfenv-chef` folder):
+
+		$ knife configure -r . --defaults
+		
+You can ignore the certificate warning because you're not connecting to a chef server. If you're going to be creating new cookbooks or recipes, it's handy to drop a few defaults into the `~/.chef/knife.rb` file you just created, like:
+
+		cookbook_copyright 'YOUR NAME'
+		cookbook_license 'apachev2'
+		cookbook_email 'you@example.com'
+
 
 Datasources
 -----------
