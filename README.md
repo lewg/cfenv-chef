@@ -11,21 +11,20 @@ Instructions
 
 1. Install their Lucid Box
 
-		$ vagrant box add base http://files.vagrantup.com/lucid32.box
+		$ vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
 
-1. Create a new folder, initialize vagrant and checkout the chef repo. Vagrant will end up sharing this folder with the VM, which makes it handy for moving extraneous files around. Then, create a folder and move the CF installer in there.
+1. Create a new folder, initialize vagrant and checkout the chef repo. Vagrant will end up sharing this folder with the VM, which makes it handy for moving extraneous files around. 
 
-		$ mkdir YOUR_FOLDER
-		$ cd YOUR_FOLDER
+		$ mkdir {PROJECT_FOLDER}
+		$ cd {PROJECT_FOLDER}
 		$ vagrant init
 		$ git clone git@github.com:lewg/cfenv-chef.git
-		$ mkdir cfinstaller
-		$ cd cfinstaller
-		$ cp YOUR_CF_INSTALLER .
-		$ chmod 755 YOUR_CF_INSTALLER
 		
-1. Note: If your installer is NOT named `ColdFusion_9_WWE_linux.bin` you'll want to adjust the installer path/name in `cfenv-chef/roles/cfserver.rb`. Make sure you keep it somewhere in the `/vagrant` folder, because that's what's shared with the guest VM.
+1. Download the ColdFusion 9 32-bit Linux installer, `ColdFusion_9_WWE_linux.bin`, available from [adobe.com](http://www.adobe.com/products/coldfusion-developer.html). Copy this file to the `files/default` directory of the cfenv cookbook and make the file executable. (See the Readme in `files/default` directory for additional installers you may wish to pre-download.)
 
+		$ cp {YOUR_DOWNLOAD_FOLDER}/ColdFusion_9_WWE_linux.bin ./cfenv-chef/cookbooks/cfenv/files/default
+		$ chmod 755 cfenv-chef/cookbooks/cfenv/files/default/ColdFusion_9_WWE_linux.bin
+		
 1. Modify the `Vagrantfile` to change the VM specs, base box, IP you'll access it on, and set up chef provisioning. Here are the relevant lines from my setup:
 
 		# Every Vagrant virtual environment requires a box to build off of.
@@ -50,12 +49,12 @@ Instructions
 			chef.add_role "cfserver"
 		end
 
-1. CF will look for a wwwroot folder in your vagrant folder to use as the web root. Whatever files you put in there will be accessible via http://(guestipaddress):8500/... See the "Optional Setup" section below for details on overriding the web root path.
+1. CF will look for a wwwroot folder in your vagrant folder to use as the web root. Whatever files you put in there will be accessible via http://(guestipaddress):8500/... See the "Optional Setup" section below for details on overriding the web root path. Note: You can skip this step and the `wwwroot` folder will be created for you.
 
-		$ cd YOUR_FOLDER
+		$ cd {PROJECT_FOLDER}
 		$ mkdir wwwroot
 
-1. Bring it up! (It takes a few minutes the first time.) When it's done you should have CF running on port 8500 of the ip you specified in the `Vagrantfile`. It's installed in `/opt/coldfusion` if you need to find it, and the administrator password is in the `cfenv-chef/roles/cfserver.rb` file (which you can change if you'd like). 
+1. Bring it up! (It takes a few minutes the first time.) When it's done you should have CF running on port 8500 of the ip you specified in the `Vagrantfile`. It's installed in `/opt/coldfusion9` if you need to find it, and the administrator password is in the `cfenv-chef/roles/cfserver.rb` file (which you can change if you'd like). 
 
 		$ vagrant up
 
@@ -123,7 +122,7 @@ You can override the default web root path to any guest path.
 SSL
 ---
 
-You can enable SSL on JRun (setup on port 9100) by including this in your setup. The cookbook is setup to override all the other certificate attributes if you'd so like. Check the cfenv cookbook Readme.
+You can enable SSL on port 9100 for the built-in JRun Web Server (JWS) by including this in your setup. The cookbook is setup to override all the other certificate attributes if you'd so like. Check the cfenv cookbook Readme.
 
 		chef.json = {
 			"cfenv" => {
