@@ -17,18 +17,26 @@
 # limitations under the License.
 #
 
-# Install the properties file
-template "/tmp/cfenv.properties" do
-  source "cfenv.properties.erb"
-  mode 0644
+# Create the CF 9 properties file
+template "/tmp/cf9-installer.properties" do
+  source "cf9-installer.properties.erb"
+  mode "0644"
   owner "root"
   group "root"
 end
 
-# Run the installer
-execute "cf_installer" do
-  command "#{node[:cfenv][:installer]} -f /tmp/cfenv.properties"
-  creates "#{node[:cfenv][:install_path]}/bin/coldfusion"
+# Move the CF 9 installer
+cookbook_file "/tmp/ColdFusion_9_WWE_linux.bin" do
+  source "ColdFusion_9_WWE_linux.bin"
+  mode "0744"
+  owner "root"
+  group "root"
+end
+
+# Run the CF 9 installer
+execute "cf9_installer" do
+  command "/tmp/ColdFusion_9_WWE_linux.bin -f /tmp/cf9-installer.properties"
+  creates "#{node[:cfenv][:install_path]}/Adobe_ColdFusion_9_InstallLog.log"
   action :run
   user "root"
   cwd "/tmp"
@@ -43,14 +51,52 @@ execute "cf_init" do
   cwd "/tmp"
 end
 
-# Set up CF as a service
+# Set up CF as a service and stop for CF 9.0.1 installation
 service "coldfusion" do
   start_command "/etc/init.d/coldfusion start"
-  stop_command "coldfusion stop"
-  status_command "status"
-  reload_command "reload"
+  stop_command "/etc/init.d/coldfusion stop"
+  status_command "/etc/init.d/coldfusion status"
+  restart_command "/etc/init.d/coldfusion restart"
   supports :status => true, :restart => true, :reload => false
-  action [ :enable ]
+  action [ :enable, :stop ]
+end
+
+# Create the CF 9.0.1 installer input file - hack to workaround silent installtion issues
+template "/tmp/cf901-installer.input" do
+  source "cf901-installer.input.erb"
+  mode "0644"
+  owner "root"
+  group "root"
+end
+
+# Download CF 9.0.1 (http://www.adobe.com/support/coldfusion/downloads_updates.html)
+remote_file "/tmp/ColdFusion_update_901_WWEJ_linux.bin" do
+  source "http://download.macromedia.com/pub/coldfusion/updates/901/ColdFusion_update_901_WWEJ_linux.bin"
+  action :create_if_missing
+  mode "0744"
+  owner "root"
+  group "root"
+end
+
+# If using a cookbook file, move the CF 9.0.1 installer 
+#cookbook_file "/tmp/ColdFusion_update_901_WWEJ_linux.bin" do
+#  source "ColdFusion_update_901_WWEJ_linux.bin"
+#  mode "0744"
+#  owner "root"
+#  group "root"
+#end
+
+# Run the CF 9.0.1 installer
+execute "cf901_installer" do
+  command "/tmp/ColdFusion_update_901_WWEJ_linux.bin < cf901-installer.input"
+  creates "#{node[:cfenv][:install_path]}/Adobe_ColdFusion_9.0.1_InstallLog.log"
+  action :run
+  user "root"
+  cwd "/tmp"
+end
+
+service "coldfusion" do
+  action :start
 end
 
 # Create the webroot if it doesn't exist
@@ -65,9 +111,9 @@ end
 # Set the webroot
 template "#{node[:cfenv][:install_path]}/wwwroot/WEB-INF/jrun-web.xml" do
   source "jrun-web.xml.erb"
-  mode 0664
+  mode "0664"
   owner "nobody"
-  group 2
+  group "bin"
   notifies :restart, "service[coldfusion]", :delayed
 end
 

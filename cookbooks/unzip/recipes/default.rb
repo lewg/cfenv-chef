@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: cfenv
-# Recipe:: datasources
+# Cookbook Name:: unzip
+# Recipe:: default
 #
-# Copyright 2011, Lew Goettner
+# Copyright 2011, Nathan Mische
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,11 +17,8 @@
 # limitations under the License.
 #
 
-# Set up CF datasources
-template "#{node[:cfenv][:install_path]}/lib/neo-datasource.xml" do
-  source "neo-datasource.xml.erb"
-  mode "0664"
-  owner "nobody"
-  group "bin"
-  notifies :restart, "service[coldfusion]", :delayed
+# Install the unzip package
+package "unzip" do
+  action :install
 end
+

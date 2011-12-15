@@ -1,7 +1,7 @@
 DESCRIPTION
 ===========
 
-Sets up a CF Standalone server in a vagrant managed box.
+Sets up ColdFusion 9.0.1 CHF 2 in standalone server mode.
 
 REQUIREMENTS
 ============
@@ -9,38 +9,46 @@ REQUIREMENTS
 ATTRIBUTES
 ==========
 
+For ColdFusion
+--------------
+
+* `node['cfenv']['install_path']` - ColdFusion installation path (default: "/opt/coldfusion9")
+* `node['cfenv']['admin_pw']` - ColdFusion administrator password (default: "cfenv")
+* `node['cfenv']['webroot']` - The built in JRun Web Server (JWS) web root (default: "/vagrant/wwwroot") 
+  Note: the cookbook will attempt to create this directory if it does not exist.
+
 For SSL
 -------
 
-* `node['cfenv']['use_ssl']` - Enable SSL in the JRun config (default: false)
-* `node['cfenv']['ssl_keystore_pass']` = Keystore Password (default: "cfenvkeys")
-* `node['cfenv']['ssl_hostname']` = Certificate Hostname
-* `node['cfenv']['ssl_company']` = Certificate Company
-* `node['cfenv']['ssl_country']` = Certificate Country
-* `node['cfenv']['ssl_state']` = Certificate State
-* `node['cfenv']['ssl_locality']` = Certificate Locality
-* `node['cfenv']['ssl_ou']` = Certificate OU
-* `node['cfenv']['ssl_email']` = Certificate Email
+* `node['cfenv']['use_ssl']` - Enable SSL in the JRun config (default: true)
+* `node['cfenv']['ssl_keystore_pass']` - Keystore Password (default: "cfenvkeys")
+* `node['cfenv']['ssl_hostname']` - Certificate Hostname (default: node['fqdn'])
+* `node['cfenv']['ssl_company']` - Certificate Company (default: "CFEnv")
+* `node['cfenv']['ssl_country']` - Certificate Country (default: "US")
+* `node['cfenv']['ssl_state']` - Certificate State (default: "Pennsylvania")
+* `node['cfenv']['ssl_locality']` - Certificate Locality (default: "Philadelphia")
+* `node['cfenv']['ssl_ou']` - Certificate OU (default: "CFEnv")
+* `node['cfenv']['ssl_email']` - Certificate Email (default: "cfenv@example.com")
 
-USAGE
-=====
+For Datasources
+---------------
 
-Add this to your Vagrantfile
+* `node['cfenv']['datasources']` - A struct of datasources (default: {})
 
-		# IP you want to access the server at (33.33.33.x is a vagrant suggestion)
-		config.vm.network "33.33.33.50"
+Below is a sample JSON datasource definition:
 
-		# Add a little memory, give it a nice name:
-		config.vm.customize do |vm|
-			vm.memory_size = 512
-			vm.name = "CFEnv"
-		end
+    "datasources" => {
+      "some_db" => {
+        "name" => "SOME_DB",
+        "driver" => "MSSQLServer",
+        "vender" => "sqlserver",
+        "buffer" => "128000.0",
+        "jdbc_class" => "jdbc:macromedia:sqlserver",
+        "server_address" => "dbserver.example.edu",
+        "server_port" => "1433",
+        "db_name" => "SOME_DB"
+      }
+    }
 
-		# Set up Chef provisioning
-		config.vm.provision :chef_solo do |chef|
-			chef.cookbooks_path = "cfenv-chef/cookbooks"
-			chef.roles_path = "cfenv-chef/roles"
-			chef.add_role "cfserver"
-		end
 
-At the end, you'll have a CF Standalone running on port 8500
+
