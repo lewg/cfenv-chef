@@ -5,6 +5,7 @@ run_list(
   "recipe[unzip]",
   "recipe[cfenv]",
   "recipe[cfenv::chf9010002]",
+  "recipe[cfenv::hf90100003]",
   "recipe[cfenv::ssl]"
 )
 # Attributes applied if the node doesn't have it set already.
