@@ -30,6 +30,7 @@ remote_file "/tmp/CF901.zip" do
   mode "0744"
   owner "root"
   group "root"
+  not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/chf9010002.jar") }
 end
 
 remote_file "/tmp/CFIDE-901.zip" do
@@ -38,6 +39,7 @@ remote_file "/tmp/CFIDE-901.zip" do
   mode "0744"
   owner "root"
   group "root"
+  not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/chf9010002.jar") }
 end
 
 =begin
@@ -79,7 +81,7 @@ script "install_chf9010002" do
   notifies :restart, "service[coldfusion]", :delayed
 end
 
-# Stop CF
+# Start CF
 service "coldfusion" do
   action :start
 end

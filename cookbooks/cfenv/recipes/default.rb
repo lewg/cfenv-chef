@@ -23,6 +23,7 @@ template "/tmp/cf9-installer.properties" do
   mode "0644"
   owner "root"
   group "root"
+  not_if { File.exists?("#{node[:cfenv][:install_path]}/Adobe_ColdFusion_9_InstallLog.log") }
 end
 
 # Move the CF 9 installer
@@ -31,6 +32,7 @@ cookbook_file "/tmp/ColdFusion_9_WWE_linux.bin" do
   mode "0744"
   owner "root"
   group "root"
+  not_if { File.exists?("#{node[:cfenv][:install_path]}/Adobe_ColdFusion_9_InstallLog.log") }
 end
 
 # Run the CF 9 installer
@@ -67,6 +69,7 @@ template "/tmp/cf901-installer.input" do
   mode "0644"
   owner "root"
   group "root"
+  not_if { File.exists?("#{node[:cfenv][:install_path]}/Adobe_ColdFusion_9.0.1_InstallLog.log") }
 end
 
 # Download CF 9.0.1 (http://www.adobe.com/support/coldfusion/downloads_updates.html)
@@ -76,6 +79,7 @@ remote_file "/tmp/ColdFusion_update_901_WWEJ_linux.bin" do
   mode "0744"
   owner "root"
   group "root"
+  not_if { File.exists?("#{node[:cfenv][:install_path]}/Adobe_ColdFusion_9.0.1_InstallLog.log") }
 end
 
 # If using a cookbook file, move the CF 9.0.1 installer 
