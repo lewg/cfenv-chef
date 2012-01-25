@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: cfenv
+# Cookbook Name:: coldfusion9
 # Recipe:: hf90100003
 #
 # Copyright 2011, Nathan Mische
