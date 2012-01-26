@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: cfenv
-# Recipe:: datasources
+# Cookbook Name:: coldfuison9
+# Recipe:: default
 #
-# Copyright 2011, Lew Goettner
+# Copyright 2011, Lew Goettner, Nathan Mische
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,11 +17,4 @@
 # limitations under the License.
 #
 
-# Set up CF datasources
-template "#{node[:cfenv][:install_path]}/lib/neo-datasource.xml" do
-  source "neo-datasource.xml.erb"
-  mode "0664"
-  owner "nobody"
-  group "bin"
-  notifies :restart, "service[coldfusion]", :delayed
-end
+include_recipe "coldfusion9::standalone"
