@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: cfenv
+# Cookbook Name:: coldfusion9
 # Recipe:: ssl
 #
-# Copyright 2011, Lew Goettner
+# Copyright 2011, Lew Goettner, Nathan Mische
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
