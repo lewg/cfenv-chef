@@ -20,6 +20,7 @@
 # Stop CF
 service "coldfusion" do
   action :stop
+  not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/hf901-00003.jar") }
 end
 
 # Download and install ColdFusion Security Hotfix (http://kb2.adobe.com/cps/925/cpsid_92512.html)
@@ -58,9 +59,4 @@ script "install_hf90100003" do
   EOH
   not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/hf901-00003.jar") }
   notifies :restart, "service[coldfusion]", :delayed
-end
-
-# Start CF
-service "coldfusion" do
-  action :start
 end

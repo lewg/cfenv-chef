@@ -20,6 +20,7 @@
 # Stop CF
 service "coldfusion" do
   action :stop
+  not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/chf9010002.jar") }
 end
 
 # Download and install ColdFusion 9.0.1 : Cumulative Hot fix 2 (http://kb2.adobe.com/cps/918/cpsid_91836.html)
@@ -79,9 +80,4 @@ script "install_chf9010002" do
   EOH
   not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/chf9010002.jar") }
   notifies :restart, "service[coldfusion]", :delayed
-end
-
-# Start CF
-service "coldfusion" do
-  action :start
 end

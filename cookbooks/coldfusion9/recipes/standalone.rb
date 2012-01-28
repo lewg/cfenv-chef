@@ -60,7 +60,13 @@ service "coldfusion" do
   status_command "/etc/init.d/coldfusion status"
   restart_command "/etc/init.d/coldfusion restart"
   supports :status => true, :restart => true, :reload => false
-  action [ :enable, :stop ]
+  action [ :enable, :start ]
+end
+
+# Stop CF
+service "coldfusion" do
+  action :stop
+  not_if { File.exists?("#{node[:cfenv][:install_path]}/Adobe_ColdFusion_9.0.1_InstallLog.log") }
 end
 
 # Create the CF 9.0.1 installer input file - hack to workaround silent installtion issues
@@ -97,11 +103,9 @@ execute "cf901_installer" do
   action :run
   user "root"
   cwd "/tmp"
+  notifies :restart, "service[coldfusion]", :delayed
 end
 
-service "coldfusion" do
-  action :start
-end
 
 # Create the webroot if it doesn't exist
 directory "#{node[:cfenv][:webroot]}" do
