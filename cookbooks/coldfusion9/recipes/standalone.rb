@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: coldfuison9
-# Recipe:: default
+# Recipe:: standalone
 #
 # Copyright 2011, Lew Goettner, Nathan Mische
 #
@@ -105,7 +105,6 @@ execute "cf901_installer" do
   cwd "/tmp"
   notifies :restart, "service[coldfusion]", :delayed
 end
-
 
 # Create the webroot if it doesn't exist
 directory "#{node[:cfenv][:webroot]}" do
