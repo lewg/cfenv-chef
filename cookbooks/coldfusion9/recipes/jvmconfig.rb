@@ -16,6 +16,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+
+if node.recipe?("java")    
+  node[:cfenv][:java_home] = "/usr/lib/jvm/default-java"
+end
   
 # Customize the jvm config
 template "#{node[:cfenv][:install_path]}/runtime/bin/jvm.config" do

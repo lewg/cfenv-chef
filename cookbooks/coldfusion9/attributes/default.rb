@@ -19,4 +19,7 @@ default[:cfenv][:ssl_state] = "Pennsylvania"
 default[:cfenv][:ssl_locality] = "Philadelphia"
 default[:cfenv][:ssl_ou] = "ColdFuison"
 default[:cfenv][:ssl_email] = "coldfusion9@example.com"
-
+# JVM
+default[:cfenv][:java_home] = "#{node['cfenv']['install_path']}/runtime" 
+# Trusted Certificates
+default[:cfenv][:trustedcerts] = {}
