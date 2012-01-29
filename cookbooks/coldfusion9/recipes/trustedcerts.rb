@@ -24,7 +24,7 @@ end
 # Import the certs
 node[:cfenv][:trustedcerts].each do |certalias,certfile|
   
-  #Copy the cert
+  # Copy the cert
   cookbook_file "#{node[:cfenv][:java_home]}/jre/lib/security/#{certfile}" do
     source "#{certfile}"
     mode "0644"
@@ -39,7 +39,7 @@ node[:cfenv][:trustedcerts].each do |certalias,certfile|
     action :run
     user "root"
     cwd "#{node[:cfenv][:java_home]}/jre/lib/security"
-    not_if "#{node[:cfenv][:java_home]}/jre/bin/keytool -list -alias #{certalias} -keystore cacerts -storepass changeit"
+    not_if "#{node[:cfenv][:java_home]}/jre/bin/keytool -list -alias #{certalias} -keystore #{node[:cfenv][:java_home]}/jre/lib/security/cacerts -storepass changeit"
     notifies :restart, "service[coldfusion]", :delayed
   end
   
