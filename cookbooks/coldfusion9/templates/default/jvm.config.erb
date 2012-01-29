@@ -3,7 +3,9 @@
 #
 # Where to find JVM, if {java.home}/jre exists then that JVM is used
 # if not then it must be the path to the JRE itself
-java.home=<%= node[:cfenv][:install_path] %>/runtime/jre
+java.home=<% if node.recipe?("java") %>/usr/lib/jvm/default-java<% else %><%=node[:cfenv][:install_path]%>/runtime/jre<% end %>
+
+
 #
 # If no java.home is specified a VM is located by looking in these places in this
 # order:
@@ -15,7 +17,7 @@ java.home=<%= node[:cfenv][:install_path] %>/runtime/jre
 #
 
 # Arguments to VM
-java.args=-server -Xmx512m -Dsun.io.useCanonCaches=false -XX:MaxPermSize=192m -XX:+UseParallelGC -Djava.awt.headless=true -Dcoldfusion.rootDir={application.home}/../ -Djava.security.policy={application.home}/../lib/coldfusion.policy -Djava.security.auth.policy={application.home}/../lib/neo_jaas.policy  -Dcoldfusion.classPath={application.home}/../lib/updates,{application.home}/../lib,{application.home}/../gateway/lib/,{application.home}/../wwwroot/WEB-INF/cfform/jars,{application.home}/../wwwroot/WEB-INF/flex/jars -Dcoldfusion.libPath={application.home}/../lib<% if node[:cfenv][:use_ssl] %> -Dcoldfusion.disablejsafe=true<% end %>
+java.args=-server -Xmx512m -Dsun.io.useCanonCaches=false -XX:MaxPermSize=192m -XX:+UseParallelGC -Djava.awt.headless=true -Dcoldfusion.rootDir={application.home}/../ -Djava.security.policy={application.home}/../lib/coldfusion.policy -Djava.security.auth.policy={application.home}/../lib/neo_jaas.policy  -Dcoldfusion.classPath={application.home}/../lib/updates,{application.home}/../lib,{application.home}/../gateway/lib/,{application.home}/../wwwroot/WEB-INF/cfform/jars,{application.home}/../wwwroot/WEB-INF/flex/jars -Dcoldfusion.libPath={application.home}/../lib<% if node.recipe?("coldfusion9::ssl") %> -Dcoldfusion.disablejsafe=true<% end %>
 
 #
 # commas will be converted to platform specific separator and the result will be passed

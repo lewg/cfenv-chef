@@ -7,7 +7,8 @@ run_list(
   "recipe[coldfusion9]",
   "recipe[coldfusion9::chf9010002]",
   "recipe[coldfusion9::hf90100003]",
-  "recipe[coldfusion9::ssl]"
+  "recipe[coldfusion9::ssl]",
+  "recipe[coldfusion9::jvmconfig]"
 )
 # Attributes applied if the node doesn't have it set already.
 default_attributes(
