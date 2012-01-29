@@ -6,8 +6,6 @@ default[:cfenv][:admin_pw] = "coldfusion9"
 default[:cfenv][:webroot] = "/vagrant/wwwroot"
 # Node Datasources
 default[:cfenv][:datasources] = {}
-# SSL On?
-default[:cfenv][:use_ssl] = true
 # Keystore Password
 default[:cfenv][:ssl_keystore_pass] = "cf9keys"
 # SSL Hostname

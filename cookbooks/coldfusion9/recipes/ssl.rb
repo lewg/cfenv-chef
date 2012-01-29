@@ -28,7 +28,6 @@ execute "cf_keygen" do
   action :run
   user "root"
   notifies :restart, "service[coldfusion]", :delayed
-  only_if { node[:cfenv][:use_ssl] }
 end
 
 # Set the permissions
@@ -36,7 +35,6 @@ execute "cf_keystore_perms" do
   command "chown nobody:bin #{node[:cfenv][:install_path]}/runtime/lib/keystore"
   user "root"    
   action :run
-  only_if { node[:cfenv][:use_ssl] }
 end
 
 # Customize the jrun config
