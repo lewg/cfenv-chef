@@ -21,3 +21,9 @@ default[:cfenv][:ssl_email] = "coldfusion9@example.com"
 default[:cfenv][:java_home] = "#{node['cfenv']['install_path']}/runtime" 
 # Trusted Certificates
 default[:cfenv][:trustedcerts] = {}
+# CF Admin Settings
+default[:cfenv][:admin][:server_setting][:caching][:inRequestTemplateCacheEnabled] = "false"
+default[:cfenv][:admin][:server_setting][:caching][:templateCacheSize] = "1024.0"
+default[:cfenv][:admin][:server_setting][:caching][:componentCacheEnabled] = "false"
+default[:cfenv][:admin][:server_setting][:caching][:trustedCacheEnabled] = "false"
+default[:cfenv][:admin][:server_setting][:caching][:saveClassFiles] = "false"
