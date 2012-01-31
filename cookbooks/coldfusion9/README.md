@@ -20,7 +20,6 @@ For ColdFusion
 For SSL
 -------
 
-* `node['cfenv']['use_ssl']` - Enable SSL in the JRun config (default: true)
 * `node['cfenv']['ssl_keystore_pass']` - Keystore Password (default: "cf9keys")
 * `node['cfenv']['ssl_hostname']` - Certificate Hostname (default: node['fqdn'])
 * `node['cfenv']['ssl_company']` - Certificate Company (default: "ColdFuison")
@@ -50,5 +49,18 @@ Below is a sample JSON datasource definition:
       }
     }
 
+For Trusted Certificates
+------------------------
+
+* `node['cfenv']['trustedcerts']` - A struct of trusted certificates (default: {})
+
+The struct should contain a key, which will be used as the alias when importing the cert
+into the cacerts keystore. The value of the key should be the name of a certificate file
+found in the cookbook files. Below is a sample JSON trustedcerts definition:
+
+    "trustedcerts" => {
+      "mycert" => "mycert.cer"
+      }
+    }
 
 

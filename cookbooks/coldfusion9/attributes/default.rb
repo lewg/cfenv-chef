@@ -6,8 +6,6 @@ default[:cfenv][:admin_pw] = "coldfusion9"
 default[:cfenv][:webroot] = "/vagrant/wwwroot"
 # Node Datasources
 default[:cfenv][:datasources] = {}
-# SSL On?
-default[:cfenv][:use_ssl] = true
 # Keystore Password
 default[:cfenv][:ssl_keystore_pass] = "cf9keys"
 # SSL Hostname
@@ -19,4 +17,13 @@ default[:cfenv][:ssl_state] = "Pennsylvania"
 default[:cfenv][:ssl_locality] = "Philadelphia"
 default[:cfenv][:ssl_ou] = "ColdFuison"
 default[:cfenv][:ssl_email] = "coldfusion9@example.com"
-
+# JVM
+default[:cfenv][:java_home] = "#{node['cfenv']['install_path']}/runtime" 
+# Trusted Certificates
+default[:cfenv][:trustedcerts] = {}
+# CF Admin Settings
+default[:cfenv][:admin][:server_setting][:caching][:inRequestTemplateCacheEnabled] = "false"
+default[:cfenv][:admin][:server_setting][:caching][:templateCacheSize] = "1024.0"
+default[:cfenv][:admin][:server_setting][:caching][:componentCacheEnabled] = "false"
+default[:cfenv][:admin][:server_setting][:caching][:trustedCacheEnabled] = "false"
+default[:cfenv][:admin][:server_setting][:caching][:saveClassFiles] = "false"
