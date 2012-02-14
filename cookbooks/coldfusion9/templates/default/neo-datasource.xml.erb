@@ -1,0 +1,941 @@
+<?xml version="1.0"?>
+<wddxPacket version="1.0">
+	<header/>
+	<data>
+		<array length="2">
+			<struct type="coldfusion.server.ConfigMap">
+				<var name="cfcodeexplorer">
+					<struct type="coldfusion.server.ConfigMap">
+						<var name="disable_autogenkeys">
+							<boolean value="false"/>
+						</var>
+						<var name="CLASS">
+							<string>org.apache.derby.jdbc.EmbeddedDriver</string>
+						</var>
+						<var name="alter">
+							<boolean value="true"/>
+						</var>
+						<var name="validationQuery">
+							<string/>
+						</var>
+						<var name="grant">
+							<boolean value="true"/>
+						</var>
+						<var name="DRIVER">
+							<string>Apache Derby Embedded</string>
+						</var>
+						<var name="update">
+							<boolean value="true"/>
+						</var>
+						<var name="buffer">
+							<number>64000.0</number>
+						</var>
+						<var name="delete">
+							<boolean value="true"/>
+						</var>
+						<var name="pooling">
+							<boolean value="true"/>
+						</var>
+						<var name="url">
+							<string>jdbc:derby:<%= node[:cfenv][:install_path] %>/db/cfcodeexplorer;create=false</string>
+						</var>
+						<var name="password">
+							<string/>
+						</var>
+						<var name="interval">
+							<number>420.0</number>
+						</var>
+						<var name="disable_blob">
+							<boolean value="true"/>
+						</var>
+						<var name="NAME">
+							<string>cfcodeexplorer</string>
+						</var>
+						<var name="create">
+							<boolean value="true"/>
+						</var>
+						<var name="storedproc">
+							<boolean value="true"/>
+						</var>
+						<var name="description">
+							<string/>
+						</var>
+						<var name="login_timeout">
+							<number>30.0</number>
+						</var>
+						<var name="insert">
+							<boolean value="true"/>
+						</var>
+						<var name="drop">
+							<boolean value="true"/>
+						</var>
+						<var name="urlmap">
+							<struct type="coldfusion.server.ConfigMap">
+								<var name="UseTrustedConnection">
+									<string>false</string>
+								</var>
+								<var name="datasource">
+									<string/>
+								</var>
+								<var name="databaseFile">
+									<string/>
+								</var>
+								<var name="MaxPooledStatements">
+									<string>1000</string>
+								</var>
+								<var name="sendStringParametersAsUnicode">
+									<string>false</string>
+								</var>
+								<var name="database">
+									<string><%= node[:cfenv][:install_path] %>/db/cfcodeexplorer</string>
+								</var>
+								<var name="informixServer">
+									<string/>
+								</var>
+								<var name="defaultusername">
+									<string/>
+								</var>
+								<var name="maxBufferSize">
+									<string/>
+								</var>
+								<var name="CONNECTIONPROPS">
+									<struct>
+										<var name="HOST">
+											<string/>
+										</var>
+										<var name="QTIMEOUT">
+											<string>0</string>
+										</var>
+										<var name="PORT">
+											<number>0.0</number>
+										</var>
+										<var name="SENDSTRINGPARAMETERSASUNICODE">
+											<string>false</string>
+										</var>
+										<var name="DATABASE">
+											<string><%= node[:cfenv][:install_path] %>/db/cfcodeexplorer</string>
+										</var>
+										<var name="SELECTMETHOD">
+											<string>direct</string>
+										</var>
+									</struct>
+								</var>
+								<var name="isnewdb">
+									<string>false</string>
+								</var>
+								<var name="host">
+									<string/>
+								</var>
+								<var name="SID">
+									<string/>
+								</var>
+								<var name="qTimeout">
+									<string>0</string>
+								</var>
+								<var name="args">
+									<string/>
+								</var>
+								<var name="port">
+									<string/>
+								</var>
+								<var name="systemDatabaseFile">
+									<string/>
+								</var>
+								<var name="pageTimeout">
+									<string/>
+								</var>
+								<var name="defaultpassword">
+									<string/>
+								</var>
+								<var name="_logintimeout">
+									<number>30.0</number>
+								</var>
+								<var name="TimeStampAsString">
+									<string>false</string>
+								</var>
+								<var name="selectMethod">
+									<string>direct</string>
+								</var>
+							</struct>
+						</var>
+						<var name="ISJ2EE">
+							<boolean value="false"/>
+						</var>
+						<var name="disable_clob">
+							<boolean value="true"/>
+						</var>
+						<var name="blob_buffer">
+							<number>64000.0</number>
+						</var>
+						<var name="revoke">
+							<boolean value="true"/>
+						</var>
+						<var name="username">
+							<string/>
+						</var>
+						<var name="select">
+							<boolean value="true"/>
+						</var>
+						<var name="disable">
+							<boolean value="false"/>
+						</var>
+						<var name="timeout">
+							<number>1200.0</number>
+						</var>
+					</struct>
+				</var>
+				<var name="cfbookclub">
+					<struct type="coldfusion.server.ConfigMap">
+						<var name="disable_autogenkeys">
+							<boolean value="false"/>
+						</var>
+						<var name="CLASS">
+							<string>org.apache.derby.jdbc.EmbeddedDriver</string>
+						</var>
+						<var name="alter">
+							<boolean value="true"/>
+						</var>
+						<var name="validationQuery">
+							<string/>
+						</var>
+						<var name="grant">
+							<boolean value="true"/>
+						</var>
+						<var name="DRIVER">
+							<string>Apache Derby Embedded</string>
+						</var>
+						<var name="update">
+							<boolean value="true"/>
+						</var>
+						<var name="buffer">
+							<number>64000.0</number>
+						</var>
+						<var name="delete">
+							<boolean value="true"/>
+						</var>
+						<var name="pooling">
+							<boolean value="true"/>
+						</var>
+						<var name="url">
+							<string>jdbc:derby:<%= node[:cfenv][:install_path] %>/db/bookclub;create=false</string>
+						</var>
+						<var name="password">
+							<string/>
+						</var>
+						<var name="interval">
+							<number>420.0</number>
+						</var>
+						<var name="disable_blob">
+							<boolean value="true"/>
+						</var>
+						<var name="NAME">
+							<string>cfbookclub</string>
+						</var>
+						<var name="create">
+							<boolean value="true"/>
+						</var>
+						<var name="storedproc">
+							<boolean value="true"/>
+						</var>
+						<var name="description">
+							<string/>
+						</var>
+						<var name="login_timeout">
+							<number>30.0</number>
+						</var>
+						<var name="insert">
+							<boolean value="true"/>
+						</var>
+						<var name="drop">
+							<boolean value="true"/>
+						</var>
+						<var name="urlmap">
+							<struct type="coldfusion.server.ConfigMap">
+								<var name="UseTrustedConnection">
+									<string>false</string>
+								</var>
+								<var name="datasource">
+									<string/>
+								</var>
+								<var name="databaseFile">
+									<string/>
+								</var>
+								<var name="MaxPooledStatements">
+									<string>1000</string>
+								</var>
+								<var name="sendStringParametersAsUnicode">
+									<string>false</string>
+								</var>
+								<var name="database">
+									<string><%= node[:cfenv][:install_path] %>/db/bookclub</string>
+								</var>
+								<var name="informixServer">
+									<string/>
+								</var>
+								<var name="defaultusername">
+									<string/>
+								</var>
+								<var name="maxBufferSize">
+									<string/>
+								</var>
+								<var name="CONNECTIONPROPS">
+									<struct>
+										<var name="HOST">
+											<string/>
+										</var>
+										<var name="QTIMEOUT">
+											<string>0</string>
+										</var>
+										<var name="PORT">
+											<number>0.0</number>
+										</var>
+										<var name="SENDSTRINGPARAMETERSASUNICODE">
+											<string>false</string>
+										</var>
+										<var name="DATABASE">
+											<string><%= node[:cfenv][:install_path] %>/db/bookclub</string>
+										</var>
+										<var name="SELECTMETHOD">
+											<string>direct</string>
+										</var>
+									</struct>
+								</var>
+								<var name="isnewdb">
+									<string>false</string>
+								</var>
+								<var name="host">
+									<string/>
+								</var>
+								<var name="SID">
+									<string/>
+								</var>
+								<var name="qTimeout">
+									<string>0</string>
+								</var>
+								<var name="args">
+									<string/>
+								</var>
+								<var name="port">
+									<string/>
+								</var>
+								<var name="systemDatabaseFile">
+									<string/>
+								</var>
+								<var name="pageTimeout">
+									<string/>
+								</var>
+								<var name="defaultpassword">
+									<string/>
+								</var>
+								<var name="_logintimeout">
+									<number>30.0</number>
+								</var>
+								<var name="TimeStampAsString">
+									<string>false</string>
+								</var>
+								<var name="selectMethod">
+									<string>direct</string>
+								</var>
+							</struct>
+						</var>
+						<var name="ISJ2EE">
+							<boolean value="false"/>
+						</var>
+						<var name="disable_clob">
+							<boolean value="true"/>
+						</var>
+						<var name="blob_buffer">
+							<number>64000.0</number>
+						</var>
+						<var name="revoke">
+							<boolean value="true"/>
+						</var>
+						<var name="username">
+							<string/>
+						</var>
+						<var name="select">
+							<boolean value="true"/>
+						</var>
+						<var name="disable">
+							<boolean value="false"/>
+						</var>
+						<var name="timeout">
+							<number>1200.0</number>
+						</var>
+					</struct>
+				</var>
+				<% node[:cfenv][:datasources].each do |idenfier,datasource| %>
+				<var name="<%= datasource['name'] %>">
+					<struct type="coldfusion.server.ConfigMap">
+						<var name="disable_autogenkeys">
+							<boolean value="false"/>
+						</var>
+						<var name="CLASS">
+							<string>macromedia.jdbc.MacromediaDriver</string>
+						</var>
+						<var name="alter">
+							<boolean value="true"/>
+						</var>
+						<var name="validationQuery">
+							<string/>
+						</var>
+						<var name="grant">
+							<boolean value="true"/>
+						</var>
+						<var name="DRIVER">
+							<string><%= datasource['driver'] %></string>
+						</var>
+						<var name="update">
+							<boolean value="true"/>
+						</var>
+						<var name="buffer">
+							<number><%= datasource['buffer'] %></number>
+						</var>
+						<var name="delete">
+							<boolean value="true"/>
+						</var>
+						<var name="pooling">
+							<boolean value="true"/>
+						</var>
+						<var name="url">
+							<string><%= datasource['jdbc_class'] %>://<%= datasource['server_address'] %>:<%= datasource['server_port'] %>;databaseName=<%= datasource['db_name'] %>;SelectMethod=direct;sendStringParametersAsUnicode=false;querytimeout=0;MaxPooledStatements=100</string>
+						</var>
+						<var name="password">
+							<string/>
+						</var>
+						<var name="interval">
+							<number>420.0</number>
+						</var>
+						<var name="TYPE">
+							<string>ddtek</string>
+						</var>
+						<var name="disable_blob">
+							<boolean value="true"/>
+						</var>
+						<var name="NAME">
+							<string><%= datasource['name'] %></string>
+						</var>
+						<var name="create">
+							<boolean value="true"/>
+						</var>
+						<var name="storedproc">
+							<boolean value="true"/>
+						</var>
+						<var name="description">
+							<string/>
+						</var>
+						<var name="login_timeout">
+							<number>30.0</number>
+						</var>
+						<var name="insert">
+							<boolean value="true"/>
+						</var>
+						<var name="drop">
+							<boolean value="true"/>
+						</var>
+						<var name="urlmap">
+							<struct type="coldfusion.server.ConfigMap">
+								<var name="databaseFile">
+									<string/>
+								</var>
+								<var name="MaxPooledStatements">
+									<string>100</string>
+								</var>
+								<var name="isnewdb">
+									<string>false</string>
+								</var>
+								<var name="host">
+									<string><%= datasource['server_address'] %></string>
+								</var>
+								<var name="port">
+									<string><%= datasource['server_port'] %></string>
+								</var>
+								<var name="pageTimeout">
+									<string/>
+								</var>
+								<var name="defaultpassword">
+									<string/>
+								</var>
+								<var name="spyLogFile">
+									<string/>
+								</var>
+								<var name="_logintimeout">
+									<number>30.0</number>
+								</var>
+								<var name="selectMethod">
+									<string>direct</string>
+								</var>
+								<var name="UseTrustedConnection">
+									<string>false</string>
+								</var>
+								<var name="datasource">
+									<string/>
+								</var>
+								<var name="sendStringParametersAsUnicode">
+									<string>false</string>
+								</var>
+								<var name="supportLinks">
+									<string>true</string>
+								</var>
+								<var name="informixServer">
+									<string/>
+								</var>
+								<var name="database">
+									<string><%= datasource['db_name'] %></string>
+								</var>
+								<var name="defaultusername">
+									<string/>
+								</var>
+								<var name="maxBufferSize">
+									<string/>
+								</var>
+								<var name="CONNECTIONPROPS">
+									<struct>
+										<var name="HOST">
+											<string><%= datasource['server_address'] %></string>
+										</var>
+										<var name="QTIMEOUT">
+											<string>0</string>
+										</var>
+										<var name="PORT">
+											<string><%= datasource['server_port'] %></string>
+										</var>
+										<var name="MAXPOOLEDSTATEMENTS">
+											<string>100</string>
+										</var>
+										<var name="SENDSTRINGPARAMETERSASUNICODE">
+											<string>false</string>
+										</var>
+										<var name="DATABASE">
+											<string><%= datasource['db_name'] %></string>
+										</var>
+										<var name="SELECTMETHOD">
+											<string>direct</string>
+										</var>
+									</struct>
+								</var>
+								<var name="SID">
+									<string/>
+								</var>
+								<var name="CF_POOLED">
+									<string>true</string>
+								</var>
+								<var name="args">
+									<string/>
+								</var>
+								<var name="qTimeout">
+									<string>0</string>
+								</var>
+								<var name="systemDatabaseFile">
+									<string/>
+								</var>
+								<var name="useSpyLog">
+									<string>false</string>
+								</var>
+								<var name="TimeStampAsString">
+									<string>no</string>
+								</var>
+								<var name="_port">
+									<number><%= datasource['server_port'] %>.0</number>
+								</var>
+								<var name="VENDOR">
+									<string><%= datasource['vender'] %></string>
+								</var>
+							</struct>
+						</var>
+						<var name="ISJ2EE">
+							<boolean value="false"/>
+						</var>
+						<var name="disable_clob">
+							<boolean value="true"/>
+						</var>
+						<var name="blob_buffer">
+							<number><%= datasource['buffer'] %></number>
+						</var>
+						<var name="revoke">
+							<boolean value="true"/>
+						</var>
+						<var name="username">
+							<string/>
+						</var>
+						<var name="select">
+							<boolean value="true"/>
+						</var>
+						<var name="disable">
+							<boolean value="false"/>
+						</var>
+						<var name="timeout">
+							<number>1200.0</number>
+						</var>
+					</struct>
+				</var>
+				<% end %>
+				<var name="cfdocexamples">
+					<struct type="coldfusion.server.ConfigMap">
+						<var name="disable_autogenkeys">
+							<boolean value="false"/>
+						</var>
+						<var name="CLASS">
+							<string>org.apache.derby.jdbc.EmbeddedDriver</string>
+						</var>
+						<var name="alter">
+							<boolean value="true"/>
+						</var>
+						<var name="validationQuery">
+							<string/>
+						</var>
+						<var name="grant">
+							<boolean value="true"/>
+						</var>
+						<var name="DRIVER">
+							<string>Apache Derby Embedded</string>
+						</var>
+						<var name="update">
+							<boolean value="true"/>
+						</var>
+						<var name="buffer">
+							<number>64000.0</number>
+						</var>
+						<var name="delete">
+							<boolean value="true"/>
+						</var>
+						<var name="pooling">
+							<boolean value="true"/>
+						</var>
+						<var name="url">
+							<string>jdbc:derby:<%= node[:cfenv][:install_path] %>/db/cfdocexamples;create=false</string>
+						</var>
+						<var name="password">
+							<string/>
+						</var>
+						<var name="interval">
+							<number>420.0</number>
+						</var>
+						<var name="disable_blob">
+							<boolean value="true"/>
+						</var>
+						<var name="NAME">
+							<string>cfdocexamples</string>
+						</var>
+						<var name="create">
+							<boolean value="true"/>
+						</var>
+						<var name="storedproc">
+							<boolean value="true"/>
+						</var>
+						<var name="description">
+							<string/>
+						</var>
+						<var name="login_timeout">
+							<number>30.0</number>
+						</var>
+						<var name="insert">
+							<boolean value="true"/>
+						</var>
+						<var name="drop">
+							<boolean value="true"/>
+						</var>
+						<var name="urlmap">
+							<struct type="coldfusion.server.ConfigMap">
+								<var name="UseTrustedConnection">
+									<string>false</string>
+								</var>
+								<var name="datasource">
+									<string/>
+								</var>
+								<var name="databaseFile">
+									<string/>
+								</var>
+								<var name="MaxPooledStatements">
+									<string>1000</string>
+								</var>
+								<var name="sendStringParametersAsUnicode">
+									<string>false</string>
+								</var>
+								<var name="database">
+									<string><%= node[:cfenv][:install_path] %>/db/cfdocexamples</string>
+								</var>
+								<var name="informixServer">
+									<string/>
+								</var>
+								<var name="defaultusername">
+									<string/>
+								</var>
+								<var name="maxBufferSize">
+									<string/>
+								</var>
+								<var name="CONNECTIONPROPS">
+									<struct>
+										<var name="HOST">
+											<string/>
+										</var>
+										<var name="QTIMEOUT">
+											<string>0</string>
+										</var>
+										<var name="PORT">
+											<number>0.0</number>
+										</var>
+										<var name="SENDSTRINGPARAMETERSASUNICODE">
+											<string>false</string>
+										</var>
+										<var name="DATABASE">
+											<string><%= node[:cfenv][:install_path] %>/db/cfdocexamples</string>
+										</var>
+										<var name="SELECTMETHOD">
+											<string>direct</string>
+										</var>
+									</struct>
+								</var>
+								<var name="isnewdb">
+									<string>false</string>
+								</var>
+								<var name="host">
+									<string/>
+								</var>
+								<var name="SID">
+									<string/>
+								</var>
+								<var name="qTimeout">
+									<string>0</string>
+								</var>
+								<var name="args">
+									<string/>
+								</var>
+								<var name="port">
+									<string/>
+								</var>
+								<var name="systemDatabaseFile">
+									<string/>
+								</var>
+								<var name="pageTimeout">
+									<string/>
+								</var>
+								<var name="defaultpassword">
+									<string/>
+								</var>
+								<var name="_logintimeout">
+									<number>30.0</number>
+								</var>
+								<var name="TimeStampAsString">
+									<string>false</string>
+								</var>
+								<var name="selectMethod">
+									<string>direct</string>
+								</var>
+							</struct>
+						</var>
+						<var name="ISJ2EE">
+							<boolean value="false"/>
+						</var>
+						<var name="disable_clob">
+							<boolean value="true"/>
+						</var>
+						<var name="blob_buffer">
+							<number>64000.0</number>
+						</var>
+						<var name="revoke">
+							<boolean value="true"/>
+						</var>
+						<var name="username">
+							<string/>
+						</var>
+						<var name="select">
+							<boolean value="true"/>
+						</var>
+						<var name="disable">
+							<boolean value="false"/>
+						</var>
+						<var name="timeout">
+							<number>1200.0</number>
+						</var>
+					</struct>
+				</var>
+				<var name="cfartgallery">
+					<struct type="coldfusion.server.ConfigMap">
+						<var name="disable_autogenkeys">
+							<boolean value="false"/>
+						</var>
+						<var name="CLASS">
+							<string>org.apache.derby.jdbc.EmbeddedDriver</string>
+						</var>
+						<var name="alter">
+							<boolean value="true"/>
+						</var>
+						<var name="validationQuery">
+							<string/>
+						</var>
+						<var name="grant">
+							<boolean value="true"/>
+						</var>
+						<var name="DRIVER">
+							<string>Apache Derby Embedded</string>
+						</var>
+						<var name="update">
+							<boolean value="true"/>
+						</var>
+						<var name="buffer">
+							<number>64000.0</number>
+						</var>
+						<var name="delete">
+							<boolean value="true"/>
+						</var>
+						<var name="pooling">
+							<boolean value="true"/>
+						</var>
+						<var name="url">
+							<string>jdbc:derby:<%= node[:cfenv][:install_path] %>/db/artgallery;create=false</string>
+						</var>
+						<var name="password">
+							<string/>
+						</var>
+						<var name="interval">
+							<number>420.0</number>
+						</var>
+						<var name="disable_blob">
+							<boolean value="true"/>
+						</var>
+						<var name="NAME">
+							<string>cfartgallery</string>
+						</var>
+						<var name="create">
+							<boolean value="true"/>
+						</var>
+						<var name="storedproc">
+							<boolean value="true"/>
+						</var>
+						<var name="description">
+							<string/>
+						</var>
+						<var name="login_timeout">
+							<number>30.0</number>
+						</var>
+						<var name="insert">
+							<boolean value="true"/>
+						</var>
+						<var name="drop">
+							<boolean value="true"/>
+						</var>
+						<var name="urlmap">
+							<struct type="coldfusion.server.ConfigMap">
+								<var name="UseTrustedConnection">
+									<string>false</string>
+								</var>
+								<var name="datasource">
+									<string/>
+								</var>
+								<var name="databaseFile">
+									<string/>
+								</var>
+								<var name="MaxPooledStatements">
+									<string>1000</string>
+								</var>
+								<var name="sendStringParametersAsUnicode">
+									<string>false</string>
+								</var>
+								<var name="database">
+									<string><%= node[:cfenv][:install_path] %>/db/artgallery</string>
+								</var>
+								<var name="informixServer">
+									<string/>
+								</var>
+								<var name="defaultusername">
+									<string/>
+								</var>
+								<var name="maxBufferSize">
+									<string/>
+								</var>
+								<var name="CONNECTIONPROPS">
+									<struct>
+										<var name="HOST">
+											<string/>
+										</var>
+										<var name="QTIMEOUT">
+											<string>0</string>
+										</var>
+										<var name="PORT">
+											<number>0.0</number>
+										</var>
+										<var name="SENDSTRINGPARAMETERSASUNICODE">
+											<string>false</string>
+										</var>
+										<var name="DATABASE">
+											<string><%= node[:cfenv][:install_path] %>/db/artgallery</string>
+										</var>
+										<var name="SELECTMETHOD">
+											<string>direct</string>
+										</var>
+									</struct>
+								</var>
+								<var name="isnewdb">
+									<string>false</string>
+								</var>
+								<var name="host">
+									<string/>
+								</var>
+								<var name="SID">
+									<string/>
+								</var>
+								<var name="qTimeout">
+									<string>0</string>
+								</var>
+								<var name="args">
+									<string/>
+								</var>
+								<var name="port">
+									<string/>
+								</var>
+								<var name="systemDatabaseFile">
+									<string/>
+								</var>
+								<var name="pageTimeout">
+									<string/>
+								</var>
+								<var name="defaultpassword">
+									<string/>
+								</var>
+								<var name="_logintimeout">
+									<number>30.0</number>
+								</var>
+								<var name="TimeStampAsString">
+									<string>false</string>
+								</var>
+								<var name="selectMethod">
+									<string>direct</string>
+								</var>
+							</struct>
+						</var>
+						<var name="ISJ2EE">
+							<boolean value="false"/>
+						</var>
+						<var name="disable_clob">
+							<boolean value="true"/>
+						</var>
+						<var name="blob_buffer">
+							<number>64000.0</number>
+						</var>
+						<var name="revoke">
+							<boolean value="true"/>
+						</var>
+						<var name="username">
+							<string/>
+						</var>
+						<var name="select">
+							<boolean value="true"/>
+						</var>
+						<var name="disable">
+							<boolean value="false"/>
+						</var>
+						<var name="timeout">
+							<number>1200.0</number>
+						</var>
+					</struct>
+				</var>
+			</struct>
+			<struct type="coldfusion.server.ConfigMap">
+				<var name="maxcachecount">
+					<number>100.0</number>
+				</var>
+			</struct>
+		</array>
+	</data>
+</wddxPacket>
