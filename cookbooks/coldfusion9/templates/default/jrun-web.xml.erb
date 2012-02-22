@@ -28,17 +28,17 @@
 
   <virtual-mapping>
     <resource-path>/WEB-INF</resource-path>
-    <system-path><%= node[:cfenv][:install_path] %>/wwwroot/WEB-INF</system-path>
+    <system-path><%= node['cf9']['install_path'] %>/wwwroot/WEB-INF</system-path>
   </virtual-mapping>
 
   <virtual-mapping>
     <resource-path>/*</resource-path>
-    <system-path><%= node[:cfenv][:webroot] %></system-path>
+    <system-path><%= node['cf9']['webroot'] %></system-path>
   </virtual-mapping>
 
   <virtual-mapping>
     <resource-path>/CFIDE/*</resource-path>
-    <system-path><%= node[:cfenv][:install_path] %>/wwwroot/CFIDE</system-path>
+    <system-path><%= node['cf9']['install_path'] %>/wwwroot/CFIDE</system-path>
   </virtual-mapping>
 
   <!-- session persistence needs to be disabled due to our classloader setup  -->

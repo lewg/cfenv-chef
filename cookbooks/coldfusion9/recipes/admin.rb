@@ -18,7 +18,7 @@
 #
 
 # Customize admin settings
-template "#{node[:cfenv][:install_path]}/lib/neo-runtime.xml" do
+template "#{node['cf9']['install_path']}/lib/neo-runtime.xml" do
   source "neo-runtime.xml.erb"
   mode "0664"
   owner "nobody"

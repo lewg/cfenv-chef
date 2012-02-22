@@ -18,7 +18,7 @@
 #
 
 # Set up CF datasources
-template "#{node[:cfenv][:install_path]}/lib/neo-datasource.xml" do
+template "#{node['cf9']['install_path']}/lib/neo-datasource.xml" do
   source "neo-datasource.xml.erb"
   mode "0664"
   owner "nobody"

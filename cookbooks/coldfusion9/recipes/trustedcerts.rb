@@ -18,28 +18,28 @@
 #
 
 if node.recipe?("java")   
-  node[:cfenv][:java_home] = "/usr/lib/jvm/default-java"
+  node['cf9']['java_home'] = "/usr/lib/jvm/default-java"
 end
 
 # Import the certs
-node[:cfenv][:trustedcerts].each do |certalias,certfile|
+node['cf9']['trustedcerts'].each do |certalias,certfile|
   
   # Copy the cert
-  cookbook_file "#{node[:cfenv][:java_home]}/jre/lib/security/#{certfile}" do
+  cookbook_file "#{node['cf9']['java_home']}/jre/lib/security/#{certfile}" do
     source "#{certfile}"
     mode "0644"
     owner "root"
     group "root"
-    not_if { File.exists?("#{node[:cfenv][:java_home]}/jre/lib/security/#{certfile}") }
+    not_if { File.exists?("#{node['cf9']['java_home']}/jre/lib/security/#{certfile}") }
   end
   
   # Import the cert
   execute "import_#{certalias}" do
-    command "#{node[:cfenv][:java_home]}/jre/bin/keytool -importcert -noprompt -trustcacerts -alias #{certalias} -file #{certfile} -keystore cacerts -storepass changeit"
+    command "#{node['cf9']['java_home']}/jre/bin/keytool -importcert -noprompt -trustcacerts -alias #{certalias} -file #{certfile} -keystore cacerts -storepass changeit"
     action :run
     user "root"
-    cwd "#{node[:cfenv][:java_home]}/jre/lib/security"
-    not_if "#{node[:cfenv][:java_home]}/jre/bin/keytool -list -alias #{certalias} -keystore #{node[:cfenv][:java_home]}/jre/lib/security/cacerts -storepass changeit"
+    cwd "#{node['cf9']['java_home']}/jre/lib/security"
+    not_if "#{node['cf9']['java_home']}/jre/bin/keytool -list -alias #{certalias} -keystore #{node['cf9']['java_home']}/jre/lib/security/cacerts -storepass changeit"
     notifies :restart, "service[coldfusion]", :delayed
   end
   
