@@ -14,7 +14,7 @@ run_list(
 )
 # Attributes applied if the node doesn't have it set already.
 default_attributes(
-  "cfenv" => {
+  "cf9" => {
     "admin_pw" => "coldfusion9"
   },
   "java" => {
