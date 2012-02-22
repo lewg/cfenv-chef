@@ -120,19 +120,19 @@
 			</struct>
 			<struct type="coldfusion.server.ConfigMap">
 				<var name="inRequestTemplateCacheEnabled">
-					<boolean value="<%= node[:cfenv][:admin][:server_setting][:caching][:inRequestTemplateCacheEnabled] %>"/>
+					<boolean value="<%= node['cf9']['admin']['server_setting']['caching']['inRequestTemplateCacheEnabled'] %>"/>
 				</var>
 				<var name="templateCacheSize">
-					<number><%= node[:cfenv][:admin][:server_setting][:caching][:templateCacheSize] %></number>
+					<number><%= node['cf9']['admin']['server_setting']['caching']['templateCacheSize'] %></number>
 				</var>
 				<var name="componentCacheEnabled">
-					<boolean value="<%= node[:cfenv][:admin][:server_setting][:caching][:componentCacheEnabled] %>"/>
+					<boolean value="<%= node['cf9']['admin']['server_setting']['caching']['componentCacheEnabled'] %>"/>
 				</var>
 				<var name="trustedCacheEnabled">
-					<boolean value="<%= node[:cfenv][:admin][:server_setting][:caching][:trustedCacheEnabled] %>"/>
+					<boolean value="<%= node['cf9']['admin']['server_setting']['caching']['trustedCacheEnabled'] %>"/>
 				</var>
 				<var name="saveClassFiles">
-					<boolean value="<%= node[:cfenv][:admin][:server_setting][:caching][:saveClassFiles] %>"/>
+					<boolean value="<%= node['cf9']['admin']['server_setting']['caching']['saveClassFiles'] %>"/>
 				</var>
 			</struct>
 			<struct type="coldfusion.server.ConfigMap">

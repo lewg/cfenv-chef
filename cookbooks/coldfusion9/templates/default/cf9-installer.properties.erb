@@ -1,8 +1,8 @@
 INSTALLER_UI=silent
 SILENT_LICENSE_MODE=developer
-SILENT_INSTALL_FOLDER=<%= node[:cfenv][:install_path] %>
+SILENT_INSTALL_FOLDER=<%= node['cf9']['install_path'] %>
 SILENT_CONFIGURE_SYSTEM_INIT=false
 SILENT_INSTALLER_TYPE=standalone
 SILENT_RUNTIMEUSER=nobody 
-SILENT_ADMIN_PASSWORD=<%= node[:cfenv][:admin_pw] %>
+SILENT_ADMIN_PASSWORD=<%= node['cf9']['admin_pw'] %>
 SILENT_ENABLE_RDS=false

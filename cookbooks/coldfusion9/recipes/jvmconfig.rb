@@ -19,11 +19,11 @@
 
 
 if node.recipe?("java")    
-  node[:cfenv][:java_home] = "/usr/lib/jvm/default-java"
+  node['cf9']['java_home'] = "/usr/lib/jvm/default-java"
 end
   
 # Customize the jvm config
-template "#{node[:cfenv][:install_path]}/runtime/bin/jvm.config" do
+template "#{node['cf9']['install_path']}/runtime/bin/jvm.config" do
   source "jvm.config.erb"
   mode "0664"
   owner "nobody"

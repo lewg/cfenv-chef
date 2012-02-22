@@ -37,7 +37,7 @@
 							<boolean value="true"/>
 						</var>
 						<var name="url">
-							<string>jdbc:derby:<%= node[:cfenv][:install_path] %>/db/cfcodeexplorer;create=false</string>
+							<string>jdbc:derby:<%= node['cf9']['install_path'] %>/db/cfcodeexplorer;create=false</string>
 						</var>
 						<var name="password">
 							<string/>
@@ -87,7 +87,7 @@
 									<string>false</string>
 								</var>
 								<var name="database">
-									<string><%= node[:cfenv][:install_path] %>/db/cfcodeexplorer</string>
+									<string><%= node['cf9']['install_path'] %>/db/cfcodeexplorer</string>
 								</var>
 								<var name="informixServer">
 									<string/>
@@ -113,7 +113,7 @@
 											<string>false</string>
 										</var>
 										<var name="DATABASE">
-											<string><%= node[:cfenv][:install_path] %>/db/cfcodeexplorer</string>
+											<string><%= node['cf9']['install_path'] %>/db/cfcodeexplorer</string>
 										</var>
 										<var name="SELECTMETHOD">
 											<string>direct</string>
@@ -217,7 +217,7 @@
 							<boolean value="true"/>
 						</var>
 						<var name="url">
-							<string>jdbc:derby:<%= node[:cfenv][:install_path] %>/db/bookclub;create=false</string>
+							<string>jdbc:derby:<%= node['cf9']['install_path'] %>/db/bookclub;create=false</string>
 						</var>
 						<var name="password">
 							<string/>
@@ -267,7 +267,7 @@
 									<string>false</string>
 								</var>
 								<var name="database">
-									<string><%= node[:cfenv][:install_path] %>/db/bookclub</string>
+									<string><%= node['cf9']['install_path'] %>/db/bookclub</string>
 								</var>
 								<var name="informixServer">
 									<string/>
@@ -293,7 +293,7 @@
 											<string>false</string>
 										</var>
 										<var name="DATABASE">
-											<string><%= node[:cfenv][:install_path] %>/db/bookclub</string>
+											<string><%= node['cf9']['install_path'] %>/db/bookclub</string>
 										</var>
 										<var name="SELECTMETHOD">
 											<string>direct</string>
@@ -364,7 +364,7 @@
 						</var>
 					</struct>
 				</var>
-				<% node[:cfenv][:datasources].each do |idenfier,datasource| %>
+				<% node['cf9']['datasources'].each do |idenfier,datasource| %>
 				<var name="<%= datasource['name'] %>">
 					<struct type="coldfusion.server.ConfigMap">
 						<var name="disable_autogenkeys">
@@ -603,7 +603,7 @@
 							<boolean value="true"/>
 						</var>
 						<var name="url">
-							<string>jdbc:derby:<%= node[:cfenv][:install_path] %>/db/cfdocexamples;create=false</string>
+							<string>jdbc:derby:<%= node['cf9']['install_path'] %>/db/cfdocexamples;create=false</string>
 						</var>
 						<var name="password">
 							<string/>
@@ -653,7 +653,7 @@
 									<string>false</string>
 								</var>
 								<var name="database">
-									<string><%= node[:cfenv][:install_path] %>/db/cfdocexamples</string>
+									<string><%= node['cf9']['install_path'] %>/db/cfdocexamples</string>
 								</var>
 								<var name="informixServer">
 									<string/>
@@ -679,7 +679,7 @@
 											<string>false</string>
 										</var>
 										<var name="DATABASE">
-											<string><%= node[:cfenv][:install_path] %>/db/cfdocexamples</string>
+											<string><%= node['cf9']['install_path'] %>/db/cfdocexamples</string>
 										</var>
 										<var name="SELECTMETHOD">
 											<string>direct</string>
@@ -783,7 +783,7 @@
 							<boolean value="true"/>
 						</var>
 						<var name="url">
-							<string>jdbc:derby:<%= node[:cfenv][:install_path] %>/db/artgallery;create=false</string>
+							<string>jdbc:derby:<%= node['cf9']['install_path'] %>/db/artgallery;create=false</string>
 						</var>
 						<var name="password">
 							<string/>
@@ -833,7 +833,7 @@
 									<string>false</string>
 								</var>
 								<var name="database">
-									<string><%= node[:cfenv][:install_path] %>/db/artgallery</string>
+									<string><%= node['cf9']['install_path'] %>/db/artgallery</string>
 								</var>
 								<var name="informixServer">
 									<string/>
@@ -859,7 +859,7 @@
 											<string>false</string>
 										</var>
 										<var name="DATABASE">
-											<string><%= node[:cfenv][:install_path] %>/db/artgallery</string>
+											<string><%= node['cf9']['install_path'] %>/db/artgallery</string>
 										</var>
 										<var name="SELECTMETHOD">
 											<string>direct</string>

@@ -20,41 +20,41 @@
 # Stop CF
 service "coldfusion" do
   action :stop
-  not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/chf9010002.jar") }
+  not_if { File.exists?("#{node['cf9']['install_path']}/lib/updates/chf9010002.jar") }
 end
 
 # Download and install ColdFusion 9.0.1 : Cumulative Hot fix 2 (http://kb2.adobe.com/cps/918/cpsid_91836.html)
 
-remote_file "/tmp/CF901.zip" do
+remote_file "#{Chef::Config['file_cache_path']}/CF901.zip" do
   source "http://kb2.adobe.com/cps/918/cpsid_91836/attachments/CF901.zip"
   action :create_if_missing
   mode "0744"
   owner "root"
   group "root"
-  not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/chf9010002.jar") }
+  not_if { File.exists?("#{node['cf9']['install_path']}/lib/updates/chf9010002.jar") }
 end
 
-remote_file "/tmp/CFIDE-901.zip" do
+remote_file "#{Chef::Config['file_cache_path']}/CFIDE-901.zip" do
   source "http://kb2.adobe.com/cps/918/cpsid_91836/attachments/CFIDE-901.zip"
   action :create_if_missing
   mode "0744"
   owner "root"
   group "root"
-  not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/chf9010002.jar") }
+  not_if { File.exists?("#{node['cf9']['install_path']}/lib/updates/chf9010002.jar") }
 end
 
 =begin
 
 # If using cookbook files, move the ColdFusion 9.0.1 : Cumulative Hot fix 2 files
  
-cookbook_file "/tmp/CF901.zip" do
+cookbook_file "#{Chef::Config['file_cache_path']}/CF901.zip" do
   source "CF901.zip"
   mode "0744"
   owner "root"
   group "root"
 end 
   
-cookbook_file "/tmp/CFIDE-901.zip" do
+cookbook_file "#{Chef::Config['file_cache_path']}/CFIDE-901.zip" do
   source "CFIDE-901.zip"
   mode "0744"
   owner "root"
@@ -66,18 +66,18 @@ end
 script "install_chf9010002" do
   interpreter "bash"
   user "root"
-  cwd "/tmp"
+  cwd "#{Chef::Config['file_cache_path']}"
   code <<-EOH
   unzip CF901.zip
-  cp CF901/lib/updates/chf9010002.jar #{node[:cfenv][:install_path]}/lib/updates   
-  unzip -o CFIDE-901.zip -d #{node[:cfenv][:install_path]}/wwwroot
-  unzip -o CF901/WEB-INF.zip -d #{node[:cfenv][:install_path]}/wwwroot  
-  cp -f CF901/lib/*.jar #{node[:cfenv][:install_path]}/lib 
-  cp -f CF901/lib/*.properties #{node[:cfenv][:install_path]}/lib  
-  chown -R nobody:bin #{node[:cfenv][:install_path]}/wwwroot
-  chown -R nobody:bin #{node[:cfenv][:install_path]}/lib
+  cp CF901/lib/updates/chf9010002.jar #{node['cf9']['install_path']}/lib/updates   
+  unzip -o CFIDE-901.zip -d #{node['cf9']['install_path']}/wwwroot
+  unzip -o CF901/WEB-INF.zip -d #{node['cf9']['install_path']}/wwwroot  
+  cp -f CF901/lib/*.jar #{node['cf9']['install_path']}/lib 
+  cp -f CF901/lib/*.properties #{node['cf9']['install_path']}/lib  
+  chown -R nobody:bin #{node['cf9']['install_path']}/wwwroot
+  chown -R nobody:bin #{node['cf9']['install_path']}/lib
   rm -fR CF901
   EOH
-  not_if { File.exists?("#{node[:cfenv][:install_path]}/lib/updates/chf9010002.jar") }
+  not_if { File.exists?("#{node['cf9']['install_path']}/lib/updates/chf9010002.jar") }
   notifies :restart, "service[coldfusion]", :delayed
 end
