@@ -32,14 +32,14 @@ Instructions
 
 		# Assign this VM to a host only network IP, allowing you to access it
 		# via the IP.
-		config.vm.network "33.33.33.50"
+		config.vm.network :hostonly, "33.33.33.50"
 
 		# Boost the RAM slightly and give it a reasonable name
-		config.vm.customize do |vm|
-			vm.memory_size = 512
-			vm.name = "CFEnv"
-		end
-	
+		config.vm.customize [
+    		"modifyvm", :id, 
+    		"--memory", "1024",
+    		"--name", "CFEnv"
+  		]
 		# Enable provisioning with chef solo, specifying a cookbooks path (relative
 		# to this Vagrantfile), and adding some recipes and/or roles.
 		#
