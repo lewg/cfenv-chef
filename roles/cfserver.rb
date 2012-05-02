@@ -2,6 +2,7 @@ name "cfserver"
 description "Set up a ColdFusion Dev Environment"
 # List of recipes and roles to apply. Requires Chef 0.8, earlier versions use 'recipes()'.
 run_list(
+  "recipe[apt]",
   "recipe[java]",
   "recipe[unzip]",
   "recipe[coldfusion9]",
